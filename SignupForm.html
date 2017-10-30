@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+
+	<style>
+		#errorMessages
+		{
+			border: 2px red solid;
+		}
+
+		.forgottenField
+		{
+			border: 2px red solid;
+		}
+
+		.resetField
+		{
+			border-color: #b2b2b2;
+			border-width: 1px;
+		}
+	</style>
+
+	<script src="jquery-3.2.1.js"></script>
+
+	<script>
+		function formSubmitHandler()
+		{
+			$( ".requiredField" ).removeClass( "forgottenField" ).addClass( "resetField" );
+
+			$( ".requiredField" ).each( function()
+			{
+				var currentField = $(this).val();
+
+				console.log( "Current Field: " + currentField );
+
+				if( currentField == "" )
+				{
+					$( "#errorMessages" ).html( "You forgot a required field." ).show();
+					$(this).addClass( "forgottenField" ).removeClass( "resetField" );
+				}
+
+			});
+
+			return false;
+		}
+
+		$(document).ready( function()
+		{
+			$( "#errorMessages" ).hide();
+			$( "#frmSignup" ).on( "submit", formSubmitHandler );
+		});
+	</script>
+</head>
+<body>
+
+	<h1>New User Signup Form</h1>
+
+	<form name="frmSignup" id="frmSignup" method="get" action="processForm.php">
+
+		<div>
+			<label for="firstName">First Name:</label>
+			<input type="text" name="firstName" id="firstName" class="requiredField" />
+		</div>
+
+		<div>
+			<label for="lastName">Last Name:</label>
+			<input type="text" name="lastName" id="lastName" class="requiredField" />
+		</div>
+
+		<div>
+			<label for="emailAddress">Email Address:</label>
+			<input type="text" name="emailAddress" id="emailAddress" class="requiredField" />
+		</div>
+
+		<div>
+			<label for="favoriteColor">Favorite Color:</label>
+			<input type="text" name="favoriteColor" id="favoriteColor" />
+		</div>
+
+		<div>
+			<label for="age">Age:</label>
+			<input type="text" name="age" id="age" />
+		</div>
+
+		<div>
+			<input type="submit" name="btnProcess" id="btnProcess" value="Process Form" />
+		</div>
+	</form>
+
+	<div id="errorMessages"></div>
+
+</body>
+</html>

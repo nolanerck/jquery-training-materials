@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.2.1.js"></script>
+	<script>
+		$(document).ready( function()
+		{
+
+			/*$( "ol li.punkBand" ).each( function()
+			{
+				alert( $(this).html() );
+			});*/
+
+			$( "ol li#nolans-favorite" ).each(function()
+			{
+				alert( $(this).html() );
+			});
+
+		});
+	</script>
+</head>
+<body>
+
+	<h1>Favorite Bands</h1>
+
+	<ol>
+		<li>Depeche Mode</li>
+		<li class="punkBand" id="nolans-favorite">7 Seconds</li>
+		<li>The Beatles</li>
+		<li class="punkBand">The Clash</li>
+		<li>The Who</li>
+		<li class="punkBand">Green Day</li>
+		<li class="punkBand">The Wynona Riders</li>
+		<li>Bob Dylan</li>
+	</ol>
+
+	<div class="punkBand">Operation Ivy</div>
+
+	<ul>
+		<li class="punkBand">PIL</li>
+		<li class="punkBand">Fang</li>
+	</ul>
+
+</body>
+</html>

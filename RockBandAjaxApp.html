@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Band Ajax App</title>
+	<script src="jquery-3.2.1.js"></script>
+	<script>
+		$(document).ready( function()
+		{
+			$( "#btnGetBands" ).on( "click", function()
+			{
+				$.ajax(
+						{
+							url: "./rockBandAPI/listBands.php"
+						}
+					).done( function( theBandArray )
+					{
+						console.log( "done getting the band list!" );
+						console.log( theBandArray );
+
+						theBandArray = JSON.parse( theBandArray );
+
+						var formattedList = "";
+
+						for( var i = 0; i < theBandArray.length; i++ )
+						{
+							formattedList += "<li data-bandid='" + (i+1) + "'>" + theBandArray[ i ] + "</li>";
+						}
+
+						$( "#myRockBandList" ).html( formattedList );
+					});
+			});
+
+			$( "li" ).on( "click", function()
+			{
+
+			});
+		});
+	</script>
+</head>
+<body>
+
+<button id="btnGetBands">Get My Rock Bands!</button>
+
+<h1>Rock Bands</h1>
+
+<ol id="myRockBandList">
+</ol>
+
+<div id="bandMembers">
+</div>
+
+</body>
+</html>

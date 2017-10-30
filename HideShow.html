@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.2.1.js"></script>
+
+	<style>
+		a
+		{
+			padding: 10px;
+			background-color: orange;
+			font-weight: bold;
+			text-align: center;
+			border-radius: 14px;
+			
+		}
+	</style>
+
+	<script>
+		$(document).ready( function()
+		{
+			$( "#btnToggleBands" ).on( "mouseover", function()
+			{
+				$( "#favoriteBands" ).show();
+			});
+
+			$( "#btnToggleBands" ).on( "mouseout", function()
+			{
+				$( "#favoriteBands" ).hide();
+			});
+		});
+	</script>
+
+</head>
+<body>
+
+	<a id="btnToggleBands">Toggle Bands</a>
+
+	<div id="favoriteBands">
+		<h1>My Favorite Bands</h1>
+
+		<ul>
+			<li>7 Seconds</li>
+			<li>David Bowie</li>
+			<li>Green Day</li>
+			<li>Operation Ivy</li>
+			<li>Agnostic Front</li>
+		</ul>
+	</div>
+
+</body>
+</html>

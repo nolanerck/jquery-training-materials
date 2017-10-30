@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.2.1.js"></script>
+	<style>
+		.header 
+		{
+			color: green;
+			text-decoration: underline;
+		}
+
+		.lineItem
+		{
+			font-size: 20px;
+			font-weight: bold;
+			padding: 15px;
+			color: orange;
+		}
+
+		#singer
+		{
+			color: yellow;
+		}
+	</style>
+
+	<script>
+		$(document).ready( function()
+		{
+			$( "h1" ).addClass( "header" );
+
+			$( "li" ).addClass( "lineItem" );
+			$( "li" ).addClass( "header" );
+		});
+	</script>
+</head>
+<body>
+
+	<h1>Favorite Bluegrass Bands</h1>
+
+	<ul>
+		<li id="singer">Willie Nelson</li>
+		<li>Blue Highway</li>
+		<li>Allison Krauss</li>
+		<li>Dar Williams</li>
+		<li>Cheryl Wheeler</li>
+	</ul>
+
+
+</body>
+</html>
