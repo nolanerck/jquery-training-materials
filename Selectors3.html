@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="jquery-3.3.1.js"></script>
+	<title></title>
+
+	<style>
+		.red-and-bold
+		{
+			color: red;
+			font-weight: bold;
+		}
+
+		.metal-band
+		{
+			font-family: Verdana;
+		}
+
+		.underline
+		{
+			text-decoration: underline;
+		}
+	</style>
+
+	<script>
+		$(document).ready( function()
+		{
+			$( "#btnHighlight" ).on( "click", function()
+												{
+													alert( "I will now highlight the metal bands" );
+
+													$( "li.metal-band" ).toggleClass( "red-and-bold" );
+													$( "li.metal-band.british" ).toggleClass( "underline" );
+												});
+
+			$( "#btnHighlightBritish" ).on( "click", function()
+			{
+				alert( "I will now highlight all the British bands." );
+
+				$( "li.british" ).toggleClass( "underline" );
+			});
+
+			$( "#btnHideBritishBands" ).on( "click", function()
+			{
+				//alert( "I will now hide all the British bands." );
+
+				$( "li.british" ).toggle();
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<button id="btnHighlight">Highlight Metal Bands</button>
+	<button id="btnHighlightBritish">Highlight British Bands</button>
+	<button id="btnHideBritishBands">Hide British Bands</button>
+
+	<h2>Favorite Music</h2>
+
+	<ul>
+		<li>Taylor Swift</li>
+		<li>Green Day</li>
+		<li class="metal-band british">Iron Maiden</li>
+		<li class="metal-band british">Def Leppard</li>
+		<li class="british">Erasure</li>
+		<li class="metal-band">Metallica</li>
+	</ul>
+
+
+</body>
+</html>

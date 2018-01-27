@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Each Loop</title>
+	<script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+	<h2>For New Wave Bands</h2>
+
+	<ul>
+		<li>Erasure</li>
+		<li>Depeche Mode</li>
+		<li>OMD</li>
+		<li>The Human League</li>
+	</ul>
+
+	<script>
+		$(document).ready(function()
+		{
+			$( "li" ).each( function()
+			{
+				alert( $(this).html() );
+			});
+		});
+	</script>
+
+</body>
+</html>

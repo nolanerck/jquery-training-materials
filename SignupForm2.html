@@ -37,27 +37,72 @@
 		<div>
 			<input type="submit" name="btnSave" id="btnSave" value="Save Form">
 		</div>
-
 	</form>
 
+	<div id="errorMessages">
+	</div>
+
+	<style>
+		.errorBox
+		{
+			color: red;
+			padding: 20px;
+			width: 50%;
+			border: solid 1px red;
+			position: relative;
+			top: 15px;
+		}
+
+		.successBox
+		{
+			color: green;
+			padding: 20px;
+			width: 50%;
+			border: solid 1px green;
+			position: relative;
+			top: 15px;			
+		}
+	</style>
+
 	<script>
-		$(document).ready( doFormValidation );
+		$(document).ready( setupPage );
+
+		function setupPage()
+		{
+			$( "#errorMessages" ).hide();
+			doFormValidation();
+		}
 
 		function doFormValidation()
 		{
 			$( "#frmSignup" ).on( "submit", function( event )
 			{
+				var formSuccess = true;
+
 				event.preventDefault();
 
 				$( "input.requiredField" ).each( function()
 				{
 					if( $(this).val() == "" )
 					{
-						alert( "You forgot a required field." );
+						$( "#errorMessages" )
+							.html( "<h2>Your form has errors</h2>You forgot a required field." )
+							.show()
+							.addClass( "errorBox" );
+
 						$(this).focus();
+						formSuccess = false;
 						exit;
 					}
 				});
+
+				if( formSuccess == true )
+				{
+					$( "#errorMessages" )
+						.html( "<h2>Success!</h2>Thank you for signing up!" )
+						.show()
+						.addClass( "successBox" );
+				}
 
 			});
 		}

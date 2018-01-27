@@ -1,0 +1,25 @@
+nav ul li
+{
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	list-style: none;
+}
+
+nav ul li:hover
+{
+	text-decoration: underline;
+	background-color: blue;
+}
+
+.selectedItem
+{
+	font-weight: bold;
+	background-color: green;
+}
+
+.clearfix
+{
+	float: none;
+	clear: both;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup Form</title>
+	<script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+	<h2>Signup Form</h2>
+
+	<form name="frmSignup" id="frmSignup" action="processform.php">
+		<div>
+			<label for="actorName">Name:</label>
+			<input type="text" name="actorName" id="actorName" class="requiredField" placeholder="Your name here">
+		</div>
+
+		<div>
+			<label for="age">Age:</label>
+			<input type="number" name="age" id="age" class="requiredField" placeholder="16 and up only please!">
+		</div>
+
+		<div>
+			<label for="emailAddress">Email:</label>
+			<input type="text" name="emailAddress" id="emailAddress" class="requiredField" placeholder="only valid email addresses please!">
+		</div>
+
+		<div>
+			<label for="favoriteColor">Favorite Color:</label>
+			<input type="color" name="favoriteColor" id="favoriteColor">
+		</div>
+
+		<div>
+			<label for="birthday">Birthday:</label>
+			<input type="date" name="birthday" id="birthday">
+		</div>
+
+		<div>
+			<input type="submit" name="btnSave" id="btnSave" value="Save Form">
+		</div>
+	</form>
+
+	<div id="errorMessages">
+	</div>
+
+	<style>
+		.errorBox
+		{
+			color: red;
+			padding: 20px;
+			width: 50%;
+			border: solid 1px red;
+			position: relative;
+			top: 15px;
+		}
+
+		.successBox
+		{
+			color: green;
+			padding: 20px;
+			width: 50%;
+			border: solid 1px green;
+			position: relative;
+			top: 15px;			
+		}
+	</style>
+
+	<script>		
+		$(document).ready( setupPage );
+
+		function setupPage()
+		{
+			$( "#errorMessages" ).hide();
+			doFormValidation();
+		}
+
+		function doFormValidation()
+		{
+			$( "#frmSignup" ).on( "submit", function( event )
+			{
+				var formSuccess = true;
+
+				event.preventDefault();
+
+				$( "input.requiredField" ).each( function()
+				{
+					var currentField = $(this);
+					var currentID = currentField.attr( "id" );
+
+					switch( currentID )
+					{
+						case "actorName": if( currentField.val() == "" )
+										  {
+										  		$( "#errorMessages" )
+										  			.html( "<h2>Your form has errors</h2>Actor Name is required" )
+										  			.show()
+										  			.addClass( "errorBox" );
+										  		formSuccess = false;
+										  }
+										  break;
+
+						case "age": if( currentField.val() == "" )
+									{
+										$( "#errorMessages" )
+											.html( "<h2>Your form has errors</h2>Age is required." )
+											.show()
+											.addClass( "errorBox" );
+										formSuccess = false;											
+									}
+									else if( currentField.val() < 1 || currentField.val() > 99 )
+									{
+										$( "#errorMessages" )
+											.html( "<h2>Your form has errors</h2>That is an invalid age." )
+											.show()
+											.addClass( "errorBox" );
+										formSuccess = false;											
+									}
+									
+									break;
+
+						case "emailAddress": if( currentField.val() == "" )
+											 {
+											 	$( "#errorMessages" )
+											 		.html( "<h2>Your form has errors</h2>Email Address is required." )
+											 		.show()
+											 		.addClass( "errorBox" );
+												formSuccess = false;											 		
+											 }
+											 else if( currentField.val().indexOf( "@" ) == -1 )
+											 {
+											 	$( "#errorMessages" )
+											 		.html( "<h2>Your form has errors</h2>Email is invalid" )
+											 		.show()
+											 		.addClass( "errorBox" );
+												formSuccess = false;											 		
+											 }
+											 
+											 break;
+					}
+				
+				});
+
+				if( formSuccess == true )
+				{
+					$( "#errorMessages" )
+						.html( "<h2>Success!</h2>Thank you for signing up!" )
+						.show()
+						.addClass( "successBox" );
+
+					document.getElementById( "frmSignup" ).submit();						
+				}
+
+			});
+		}
+
+	</script>
+
+</body>
+</html>

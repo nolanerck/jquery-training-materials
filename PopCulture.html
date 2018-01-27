@@ -2,146 +2,56 @@
 <html>
 <head>
 	<title>Pop Culture App</title>
-	<script src="jquery-3.2.1.js"></script>
-
-	<style>
-		nav
-		{
-			padding-top: 15px;
-		}
-
-		nav span
-		{
-			border-radius: 10px;
-			background-color: orange;
-			padding: 10px;
-		}
-
-		.selectedItem
-		{
-			border: 2px black solid;
-		}
-
-		.menuItem:hover
-		{
-			color: yellow;
-			cursor: pointer;
-		}
-	</style>
+	<script src="jquery-3.3.1.js"></script>
 
 	<script>
-		$(document).ready( function()
+		function setupPage()
 		{
-			$( "#countryList" ).hide();
-			$( "#metalList" ).hide();
-			$( "#newWaveBands" ).addClass( "selectedItem" );
+			$( "h2" ).on( "click", function()
+								   {
+								   		$(this).next().toggle();
+								   });
+		}
 
-			$( ".menuItem" ).on( "mouseover", function()
-			{
-				$(this).css( "color", "yellow" );
-			});
-
-			$( ".menuItem" ).on( "mouseout", function()
-			{
-				$(this).css( "color", "black" );
-			});			
-*/			
-
-			
-			metalBandHandler = function()
-			{
-				document.getElementById( "newWaveList" ).style.display = "none"; 
-				document.getElementById( "countryList" ).style.display = "none"; 
-				document.getElementById( "metalList" ).style.display = ""; 
-
-				var aryElements = document.getElementsByClassName( "menuItem" );
-				for( var i = 0; i < aryElements.length; i++ )
-				{
-					i.classList.remove( "selectedItem" );
-				}
-
-				document.getElementById( "metalBands" ).classList.add( "selectedItem" );
-			}
-
-			document.getElementById( "metalBands" ).addEventListener( "click", metalBandHandler );
-*/
-
-	
-
-		});
+		$(document).ready( setupPage );
 	</script>
+
 </head>
 <body>
-	<nav>
-		<span id="newWaveBands" class="menuItem">New Wave</span>
-		<span id="countryBands" class="menuItem">Country</span>
-		<span id="metalBands" class="menuItem">Metal</span>
-	</nav>
 
-	<div id="newWaveList">
-		<h1>New Wave Bands</h1>
+	<div id="favorite-music">
+		<h2>Favorite Music</h2>
+
+		<div>
+			<p>"But when the music hits I feel no pain at all." -Rancid</p>
+
+			<ul>
+				<li>Depeche Mode</li>
+				<li>Green Day</li>
+				<li>David Bowie</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="favorite-books">
+		<h2>Favorite Books</h2>
 
 		<ul>
-			<li>Depeche Mode</li>
-			<li>Erasure</li>
-			<li>The Cure</li>
-			<li>Yazoo</li>
+			<li>Holidays On Ice - David Sedaris</li>
+			<li>Smile You're Traveling - Henry Rollins</li>
+			<li>Drinking With Strangers - Butch Walker</li>
 		</ul>
 	</div>
 
-	<div id="countryList">
-		<h1>Country Bands</h1>
+	<div id="favorite-movies">
+		<h2>Favorite Movies</h2>
 
 		<ul>
-			<li>Johnny Cash</li>
-			<li>Nancy Griffith</li>
-			<li>Patsy Cline</li>
-			<li>Hank Williams</li>
+			<li>Singles</li>
+			<li>Labyrinth</li>
+			<li>Some Kind of Wonderful</li>
 		</ul>
 	</div>
-
-	<div id="metalList">
-		<h1>Metal Bands</h1>
-
-		<ul>
-			<li>King Diamond</li>
-			<li>Iron Maiden</li>
-			<li>Def Leppard</li>
-			<li>Queensryche</li>
-		</ul>
-	</div>
-
-	<script>
-		$(document).ready( function()
-		{
-			$( "#newWaveBands" ).on( "click", function()
-			{
-				$( "#countryList" ).hide();
-				$( "#metalList" ).hide();
-				$( "#newWaveList" ).show();
-				$( ".menuItem" ).removeClass( "selectedItem" );
-				$( "#newWaveBands" ).addClass( "selectedItem" );
-			});
-
-			$( "#countryBands" ).on( "click", function()
-			{
-				$( "#newWaveList" ).hide();
-				$( "#metalList" ).hide();
-				$( "#countryList" ).show();
-				$( ".menuItem" ).removeClass( "selectedItem" );
-				$( "#countryBands" ).addClass( "selectedItem" );
-			});
-
-			$( "#metalBands" ).on( "click", function()
-			{
-				$( "#newWaveList" ).hide();
-				$( "#countryList" ).hide();
-				$( "#metalList" ).show();
-				$( ".menuItem" ).removeClass( "selectedItem" );
-				$( "#metalBands" ).addClass( "selectedItem" );
-			});
-		});
-	</script>
 
 </body>
 </html>

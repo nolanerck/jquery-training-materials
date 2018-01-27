@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sorted Rock Bands!</title>
+	<script src="jquery-3.3.1.js"></script>
+	<script src="jquery.tablesorter.js"></script>
+	<script>
+		$(document).ready( function()
+		{
+			$( "#btnGetBands" ).on( "click", function()
+			{
+				$.ajax(
+							{
+								url: "./rockBandAPI/listBands.php"
+							}
+					  ).done( function( theBandArray )
+					  {
+					  		console.log( "found the band list" );
+					  		console.log( theBandArray );
+
+					  		var formattedBandArray = JSON.parse( theBandArray );
+					  		var formattedBands = "";
+
+					  		for( var i = 0; i < formattedBandArray.length; i++ )
+					  		{
+					  			formattedBands += "<tr><td>" + formattedBandArray[ i ] + "</td></tr>";
+					  		}
+
+					  		$( "#tblRockBands tbody" ).html( formattedBands );
+
+					  		$( "#tblRockBands" ).tablesorter();
+					  });
+			});
+		});
+	</script>
+
+	<style>
+		#tblRockBands
+		{
+			font-family: Verdana;
+		}
+	</style>
+</head>
+<body>
+
+	<button id="btnGetBands">Get Rock Bands!</button>
+
+	<table id="tblRockBands">
+		<thead>
+			<tr>
+				<th>Band Name</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+</body>
+</html>

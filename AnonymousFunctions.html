@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Anonymous Functions</title>
+	<script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+	<script>
+		/*
+		$(document).ready( function()
+							{
+								alert( "jQuery is ready to use!" );
+							});
+
+
+		function sayHello()
+		{
+			alert( "Hello and welcome to BAVC!" );
+		}
+
+		document.getElementById( "btnShowPopup" ).addEventListener( "click", sayHello );
+
+		document.getElementById( "btnShowPopup" ).addEventListener( "click", function()
+																			 {
+																			 	alert( "Welcome to SF" );
+																			 } );		
+		*/
+
+		function doMusicInfo()
+		{
+			alert( "Green Day used to be named Sweet Children" );
+		}
+
+		function setupPage()
+		{
+			alert( "jQuery is ready!" );
+
+			//$( "#btnMusicTrivia" ).on( "click", doMusicInfo );
+			$( "#btnMusicTrivia" ).on( "click", doMusicInfo );
+
+			$( "#btnMovieTrivia" ).on( "click", function() 
+												{ 
+											    	alert( "the is a Top Gun sequel in the works." ); 
+											    });
+		}
+
+		$(document).ready( setupPage );
+
+	</script>
+
+
+	<button id="btnMusicTrivia">Show Music Trivia</button>
+	<button id="btnMovieTrivia">Show Movie Trivia</button>
+
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Rock Band Ajax App</title>
-	<script src="jquery-3.2.1.js"></script>
+	<script src="jquery-3.3.1.js"></script>
 	<script>
 		$(document).ready( function()
 		{
@@ -12,42 +12,80 @@
 						{
 							url: "./rockBandAPI/listBands.php"
 						}
-					).done( function( theBandArray )
-					{
-						console.log( "done getting the band list!" );
-						console.log( theBandArray );
+					  ).done( function( theBandArray )
+					  {
+					  		console.log( "done getting the band list!" );
+					  		console.log( theBandArray );
 
-						theBandArray = JSON.parse( theBandArray );
+					  		var theBandArrayFormatted = JSON.parse( theBandArray );
 
-						var formattedList = "";
+					  		var formattedList = "";
 
-						for( var i = 0; i < theBandArray.length; i++ )
-						{
-							formattedList += "<li data-bandid='" + (i+1) + "'>" + theBandArray[ i ] + "</li>";
-						}
+					  		for( var i = 0; i < theBandArrayFormatted.length; i++ )
+					  		{
+					  			formattedList += "<li data-bandid='" + (i+1) + "'>" + theBandArrayFormatted[ i ] + "</li>";
+					  		}
 
-						$( "#myRockBandList" ).html( formattedList );
-					});
-			});
+					  		$( "#myRockBandList" ).html( formattedList );
 
-			$( "li" ).on( "click", function()
-			{
-
+					  		doListItemClicks();
+					  });
 			});
 		});
+
+		function doListItemClicks()
+		{
+			$( "li" ).on( "click", function()
+			{
+				var myBandID = $(this).data( "bandid" );
+				var myURL = "./rockBandAPI/bandDetails.php?bandID=" + myBandID;
+
+				$.ajax(
+						{
+							url: myURL
+						}
+					  ).done( function( theBandDetails )
+					  {
+					  		console.log( "found band details!" );
+					  		console.log( theBandDetails );
+
+					  		var theBandDetailsFormatted = JSON.parse( theBandDetails );
+
+					  		var formattedBandMates = "";
+
+					  		for( var i = 0; i < theBandDetailsFormatted.length; i++ )
+					  		{
+					  			formattedBandMates += "<span>" + theBandDetailsFormatted[ i ] + "</span>";
+					  		}
+
+					  		$( "#bandMembers" ).html( formattedBandMates );
+					  });
+			});
+		}
 	</script>
-</head>
+
+	<style>
+		#bandMembers span
+		{
+			padding-left: 10px;
+			padding-right: 10px;
+			font-family: Verdana;
+		}
+	</style>
+</head>d
 <body>
 
-<button id="btnGetBands">Get My Rock Bands!</button>
+	<button id="btnGetBands">Get My Rock Bands!</button>
 
-<h1>Rock Bands</h1>
+	<h1>Rock Bands</h1>
 
-<ol id="myRockBandList">
-</ol>
+	<ul id="myRockBandList">
+	</ul>
 
-<div id="bandMembers">
-</div>
+	<div id="bandMembers">
+	</div>
+
+	<div>(c) 2018 BAVC Rad Software</div>
 
 </body>
 </html>

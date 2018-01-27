@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Favorote Bands</title>
-	<script src="jquery-3.2.1.js"></script>
+	<script src="jquery-3.3.1.js"></script>
+	<title></title>
 
 	<style>
-		.countryMusic
+		.red-and-bold
 		{
-			font-family: Courier;
-			padding-left: 55px;
+			color: red;
+			font-weight: bold;
+		}
+
+		.metal-band
+		{
+			font-family: Verdana;
 		}
 	</style>
 
 	<script>
 		$(document).ready( function()
 		{
-			$( "li" ).css( "color", "green" );
-
-			$( ".newwave" ).css( "padding", "15px" );
-
-			$( ".country" ).css( "fontFamily", "Courier" );
-			$( ".country" ).css( "paddingLeft", "55px" );
+			$( "li.metal-band" ).addClass( "red-and-bold" );
 		});
 	</script>
 </head>
 <body>
 
-<h1>Favorite Rock Bands</h1>
+	<button>Highlight Metal Bands</button>
 
-<ol>
-	<li class="newwave">ZZ Top</li>
-	<li class="newwave">Tom Petty & The Heartbreakers</li>
-	<li class="country">Lyle Lovette and His Large Band</li>
-	<li class="newwave">The Cars</li>
-	<li class="newwave">Queen</li>
-	<li class="newwave">The Cure</li>
-	<li class="newwave">Talking Heads</li>
-	<li class="metal">Iron Maiden</li>
-</ol>
+	<h2>Favorite Music</h2>
+
+	<ul>
+		<li>Taylor Swift</li>
+		<li>Green Day</li>
+		<li class="metal-band">Iron Maiden</li>
+		<li class="metal-band">Def Leppard</li>
+	</ul>
 
 
 </body>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pop Culture App</title>
+	<script src="jquery-3.3.1.js"></script>
+
+	<script>
+		function setupPage()
+		{
+			$( "#favorite-books" ).hide();
+			$( "#favorite-movies" ).hide();
+			$( "#favorite-music" ).hide();
+
+			$( "#home-link" ).on( "click", showHomePage );
+			$( "#book-link" ).on( "click", showBooks );
+			$( "#movie-link" ).on( "click", showMovies );
+			$( "#music-link" ).on( "click", showMusic );
+		}
+
+		function showHomePage()
+		{
+			$( "#favorite-music" ).hide();
+			$( "#favorite-books" ).hide();
+			$( "#favorite-movies" ).hide();
+
+			$( "#home-page" ).show();
+		}
+
+		function showMusic()
+		{
+			$( "#home-page" ).hide();
+			$( "#favorite-books" ).hide();
+			$( "#favorite-movies" ).hide();
+
+			$( "#favorite-music" ).show();
+		}
+
+		function showBooks()
+		{
+			$( "#favorite-music" ).hide();
+			$( "#favorite-movies" ).hide();
+
+			$( "#favorite-books" ).show();
+		}
+
+		function showMovies()
+		{
+			$( "#favorite-music" ).hide();
+			$( "#favorite-books" ).hide();
+
+			$( "#favorite-movies" ).show();
+		}
+
+		$(document).ready( setupPage );
+	</script>
+
+	<style>
+		nav ul li
+		{
+			float: left;
+			padding-left: 10px;
+			padding-right: 10px;
+			list-style: none;
+		}
+
+		.clearfix
+		{
+			float: none;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li id="home-link">Home</li>
+			<li id="music-link">Music</li>
+			<li id="book-link">Books</li>
+			<li id="movie-link">Movies</li>
+		</ul>
+	</nav>
+
+	<br class="clearfix">
+
+	<div id="home-page">
+		<p>Welcome to our Pop Culture App! Please look around!</p>
+	</div>
+
+	<div id="favorite-music">
+		<h2>Favorite Music</h2>
+
+		<div>
+			<p>"But when the music hits I feel no pain at all." -Rancid</p>
+
+			<ul>
+				<li>Depeche Mode</li>
+				<li>Green Day</li>
+				<li>David Bowie</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="favorite-books">
+		<h2>Favorite Books</h2>
+
+		<ul>
+			<li>Holidays On Ice - David Sedaris</li>
+			<li>Smile You're Traveling - Henry Rollins</li>
+			<li>Drinking With Strangers - Butch Walker</li>
+		</ul>
+	</div>
+
+	<div id="favorite-movies">
+		<h2>Favorite Movies</h2>
+
+		<ul>
+			<li>Singles</li>
+			<li>Labyrinth</li>
+			<li>Some Kind of Wonderful</li>
+		</ul>
+	</div>
+
+</body>
+</html>
